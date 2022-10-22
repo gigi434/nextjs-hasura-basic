@@ -3,5 +3,7 @@ schema: "https://knowing-terrier-72.hasura.app/v1/graphql"
 documents: "queries/**/*.ts"
 generates:
   types/generated/graphql.tsx:
-    preset: "client"
-    plugins: []
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"
