@@ -39,7 +39,7 @@ export const Layout: VFC<LayoutProps> = ({
                             <Link href={"/local-state-a"}>
                                 <a
                                     data-testid="makevar-nav"
-                                    className='text-gray-300 hover: bg-gray-700 px-3 py-2 rouded'
+                                    className='text-gray-300 hover:bg-gray-700 px-3 py-2 rouded'
                                 >
                                     makeVar
                                 </a>
@@ -48,7 +48,7 @@ export const Layout: VFC<LayoutProps> = ({
                             <Link href="/hasura-main">
                                 <a
                                     data-testid="fetchpolicy-nav"
-                                    className='text-gray-300 hover:bg-gray-700 px-3 py-3 rounded'
+                                    className='text-gray-300 hover:bg-gray-700 px-3 py-2 rounded'
                                 >
                                     fetchPolicy(hasura)
                                 </a>
