@@ -9,7 +9,11 @@ import { Layout } from '../components/Layout'
 // Apollo ClientのuseQuery関数を使用することによりGraphQLクエリを利用し、GraphQLサーバーからユーザーデータを取得する
 // キャッシュ機能は使用していない
 const FetchMain: VFC = () => {
-    const { data, error } = useQuery<GetUsersQuery>(GET_USERS)
+    // フェッチポリシーをnetwork-onlyにすることで、hasura-subと比較して明示的にGraphQLサーバーからユーザー情報をフェッチする
+    const { data, error } = useQuery<GetUsersQuery>(
+        GET_USERS, 
+        { fetchPolicy: 'network-only' },
+    )
 
     if (error) {
         return (
