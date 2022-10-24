@@ -6,7 +6,7 @@ import { GetUsersQuery } from "../types/generated/graphql"
 import { Layout } from "../components/Layout"
 
 const FetchSub: VFC = () => {
-    // useQueryにはフェッチポリシーがあり、指定がなければキャッシュファースト（キャッシュがあれば見に行く）設定になる。
+    // useQueryにはフェッチポリシーがあり、指定がなければcache-first（キャッシュがあれば見に行く）設定になる。
     // キャッシュがない場合サーバーにクエリを投げることはしない
     const { data } = useQuery<GetUsersQuery>(GET_USERS_LOCAL)
     return (

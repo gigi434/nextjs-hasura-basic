@@ -12,7 +12,13 @@ const FetchMain: VFC = () => {
     // フェッチポリシーをnetwork-onlyにすることで、hasura-subと比較して明示的にGraphQLサーバーからユーザー情報をフェッチする
     const { data, error } = useQuery<GetUsersQuery>(
         GET_USERS, 
-        { fetchPolicy: 'network-only' },
+        { fetchPolicy: 
+            'network-only'
+            // 'cache-first' 最初に1回だけフェッチし、キャッシュに保存したデータだけ読み込む　バックグラウンドで頻繁に変わるデータに不向き
+            // 'no-cache' キャッシュを利用せずに毎回サーバーにデータをフェッチする　キャッシュは作成されない
+            // 'network-only' 毎回フェッチし、キャッシュに保存する　頻繁に変わるデータに向いている
+            // 'cache-and-network' network-onlyと比べて挙動は同じだが、キャッシュがある場合は表示してフェッチ後に新しいデータで上書きする
+        },
     )
 
     if (error) {
