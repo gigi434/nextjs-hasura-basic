@@ -64,3 +64,5 @@ const HasuraCRUD: VFC = () => {
         </Layout>
     )
 }
+
+export default HasuraCRUD
