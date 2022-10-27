@@ -29,8 +29,10 @@ export const initializeApollo = (initialState = null) => {
     const _apolloClient = apolloClient ?? createApolloClient()
 
     // For SSG and SSR always create a new Apollo Client
+    // SSRとSSGなどサーバーサイドの処理を行う場合はいつもApollo Clientインスタンスを生成する必要がある
     if (typeof window === 'undefined') return _apolloClient
     // Create the Apollo Client once in the client
+    // CSRなどクライアントサイドの処理を行う場合は一度だけApollo Clientインスタンスを生成する
     if (!apolloClient) apolloClient = _apolloClient
 
     return _apolloClient
