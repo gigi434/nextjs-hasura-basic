@@ -1,3 +1,9 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    // Next.js公式ドキュメントによると、
+    // "next/core-web-vitals"は、Next.jsの基本ESLint設定＋より厳密なルールセット(Core Web Vitals rule-set)を含んでいます。
+    "next/core-web-vitals",
+    // prettierのルールを最終的に適用するため最後に記述すること
+    "prettier"
+  ]
 }
