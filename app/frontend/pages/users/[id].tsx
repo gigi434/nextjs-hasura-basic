@@ -1,11 +1,6 @@
 import { VFC } from 'react'
 import Link from 'next/link'
-import {
-  GetStaticProps,
-  GetStaticPaths,
-  InferGetStaticPropsType,
-  GetStaticPropsContext,
-} from 'next'
+import { GetStaticProps, GetStaticPaths, GetStaticPropsContext } from 'next'
 import { ChevronDoubleLeftIcon } from '@heroicons/react/solid'
 import { initializeApollo } from '../../lib/apolloClient'
 import { GET_USERIDS, GET_USERBY_ID } from '../../queries/queries'
@@ -30,21 +25,21 @@ const UserDetail: VFC<UserDetailProps> = ({ user }) => {
 
   return (
     <Layout title={user.name}>
-      <p className='text-xl font-bold'>User-detail</p>
+      <p className='text-xl font-bold'>User detail</p>
       <p className='m-4'>
-        {'ID: '}
+        {'ID : '}
         {user.id}
       </p>
       <p className='mb-4 text-xl font-bold'>{user.name}</p>
       <p className='mb-12'>{user.created_at}</p>
-
-      {/* mainページへのリンク */}
       <Link href='/hasura-ssg'>
-        <ChevronDoubleLeftIcon
-          data-testid='auth-to-main'
-          className='h-5 w-5 mr-3 text-blue-500'
-        />
-        <span date-testid='back-to-main'>Back to main-ssg-page</span>
+        <div className='flex cursor-pointer mt-12'>
+          <ChevronDoubleLeftIcon
+            data-testid='auth-to-main'
+            className='h-5 w-5 mr-3 text-blue-500'
+          />
+          <span data-testid='back-to-main'>Back to main-ssg-page</span>
+        </div>
       </Link>
     </Layout>
   )
@@ -68,7 +63,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 // ユーザーごとに表示するのに必要な関数コンポーネントの引数を作成する
-export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
+export const getStaticProps: GetStaticProps = async ({
+  params,
+}: GetStaticPropsContext) => {
   const apolloClient = initializeApollo()
   // ユーザーIDからユーザー情報を取得する
   const { data } = await apolloClient.query<GetUserByIdQuery>({
