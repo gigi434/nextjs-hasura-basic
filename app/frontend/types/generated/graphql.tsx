@@ -20,7 +20,7 @@ export type Scalars = {
   Int: number
   Float: number
   timestamptz: any
-  uuid: any
+  uuid: string
 }
 
 /** Boolean expression to compare columns of type "String". All fields are combined with logical 'AND'. */
@@ -1336,14 +1336,19 @@ export type GetUsersQueryVariables = Exact<{ [key: string]: never }>
 
 export type GetUsersQuery = {
   __typename?: 'query_root'
-  users: Array<{ __typename?: 'users'; id: any; name: string; created_at: any }>
+  users: Array<{
+    __typename?: 'users'
+    id: string
+    name: string
+    created_at: any
+  }>
 }
 
 export type GetUserIDsQueryVariables = Exact<{ [key: string]: never }>
 
 export type GetUserIDsQuery = {
   __typename?: 'query_root'
-  users: Array<{ __typename?: 'users'; id: any }>
+  users: Array<{ __typename?: 'users'; id: string }>
 }
 
 export type GetUserByIdQueryVariables = Exact<{
@@ -1354,7 +1359,7 @@ export type GetUserByIdQuery = {
   __typename?: 'query_root'
   users_by_pk?: {
     __typename?: 'users'
-    id: any
+    id: string
     name: string
     created_at: any
   } | null
@@ -1369,7 +1374,7 @@ export type CreateUserMutation = {
   insert_users_one?: {
     __typename?: 'users'
     created_at: any
-    id: any
+    id: string
     name: string
   } | null
 }
@@ -1382,7 +1387,7 @@ export type DeleteUserMutation = {
   __typename?: 'mutation_root'
   delete_users_by_pk?: {
     __typename?: 'users'
-    id: any
+    id: string
     name: string
     created_at: any
   } | null
@@ -1397,7 +1402,7 @@ export type UpdateUserMutation = {
   __typename?: 'mutation_root'
   update_users_by_pk?: {
     __typename?: 'users'
-    id: any
+    id: string
     name: string
     created_at: any
   } | null
