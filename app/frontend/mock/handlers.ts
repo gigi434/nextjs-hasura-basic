@@ -46,7 +46,7 @@ export const handlers = [
       }),
     )
   }),
-  graphql.query('GetUserById', (req, res, ctx) => {
+  graphql.query('GetUserByID', (req, res, ctx) => {
     const { id } = req.variables
     if (id === 'b6137849-7f1d-c2db-e609-22056fb86db3') {
       return res(
