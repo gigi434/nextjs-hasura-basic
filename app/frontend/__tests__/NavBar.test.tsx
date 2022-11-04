@@ -10,6 +10,9 @@ import { getPage, initTestHelpers } from 'next-page-tester'
 import { setupServer } from 'msw/node'
 import { handlers } from '../mock/handlers'
 
+process.env.NEXT_PUBLIC_HASURA_URL =
+  'https://knowing-terrier-72.hasura.app/v1/graphql'
+
 // 最初に初期化する必要があるため実行する
 initTestHelpers()
 
